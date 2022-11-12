@@ -7,6 +7,7 @@ public class Ventana extends JFrame {
     Panel panel;
     private BotonesBebidas botones1;
     private BotonesMonedas botones2;
+    private BotonesExp botones3;
     
     public Ventana(){
         super();
@@ -18,6 +19,7 @@ public class Ventana extends JFrame {
         
         botones1 = new BotonesBebidas(panel);
         botones2 = new BotonesMonedas(panel);
+        botones3 = new BotonesExp(panel);
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(1040,720);
