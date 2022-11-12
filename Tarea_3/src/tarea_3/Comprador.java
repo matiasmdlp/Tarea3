@@ -1,13 +1,17 @@
 package tarea_3;
 
-public class Comprador {
+import java.awt.*;
+import java.util.ArrayList;
+import javax.swing.*;
+
+public class Comprador extends JPanel{
 
     private int vuelto;
     private String queBebida;
     private Expendedor exp;
     
-    public Comprador(Moneda m, int cualBebida, Expendedor exp){
-        this.exp=exp;
+    public Comprador(){
+    /*    this.exp=exp;
         try {
         Bebida b = exp.comprarBebida(m, cualBebida);
         if (b != null) {
@@ -19,7 +23,7 @@ public class Comprador {
             System.out.println("Pago Insuficiente");
         } catch (PagoIncorrectoException e){
             System.out.println("Pago Incorrecto");
-        }
+        }*/
     }
 
     public String getVuelto(){

@@ -29,7 +29,7 @@ public class Coca extends Bebida {
         g.fillRect(this.getX()+35, this.getY()-10, this.getHeight(), this.getWidth());
         
         g.setColor(Color.black);
-        g.setFont(new Font("SansSerif.", 1, 10));
+        g.setFont(new Font("Arial", 1, 10));
         g.drawString("CocaCola", this.getX()+40, this.getY()-15+(this.getHeight()/2)-10);
         g.drawString(super.getSerie(), this.getX()+55, this.getY()-5+(this.getHeight()/2)-10);
     }

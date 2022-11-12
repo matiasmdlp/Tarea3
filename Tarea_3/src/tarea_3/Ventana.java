@@ -5,6 +5,7 @@ import javax.swing.*;
 
 public class Ventana extends JFrame {
     Panel panel;
+    private BotonesBebidas botones1;
     
     public Ventana(){
         super();
@@ -13,6 +14,8 @@ public class Ventana extends JFrame {
         
         panel=new Panel();
         this.getContentPane().add(panel);
+        
+        botones1 = new BotonesBebidas(panel);
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(1040,720);

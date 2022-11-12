@@ -30,7 +30,7 @@ public class Sprite extends Bebida {
         g.fillRect(this.getX()+155, this.getY()-10, this.getHeight(), this.getWidth());
         
         g.setColor(Color.black);
-        g.setFont(new Font("SansSerif.", 1, 10));
+        g.setFont(new Font("Arial", 1, 10));
         g.drawString("Sprite", this.getX()+170, this.getY()-15+(this.getHeight()/2)-10);
         g.drawString(super.getSerie(), this.getX()+175, this.getY()-5+(this.getHeight()/2)-10);
     }
