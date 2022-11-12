@@ -133,6 +133,25 @@ public class Expendedor extends JPanel{
         g.fillRect(this.getX()+185, this.getY()+65, 110, 395);
         g.fillRect(this.getX()+305, this.getY()+65, 110, 395);
         
+        g.setColor(Color.orange);
+        g.fillOval(760, 160, 80, 80);
+        g.setColor(Color.BLACK);
+        g.drawOval(760, 160, 80, 80);
+        
+        g.setColor(Color.orange);
+        g.fillOval(880, 160, 80, 80);
+        g.setColor(Color.BLACK);
+        g.drawOval(880, 160, 80, 80);
+        
+        g.setColor(Color.orange);
+        g.fillOval(760, 280, 80, 80);
+        g.setColor(Color.BLACK);
+        g.drawOval(760, 280, 80, 80);
+        
+        g.setColor(Color.orange);
+        g.fillOval(880, 280, 80, 80);
+        g.setColor(Color.BLACK);
+        g.drawOval(880, 280, 80, 80);
                 
         coca.paintComponent(g, this);
         sprite.paintComponent(g, this);
