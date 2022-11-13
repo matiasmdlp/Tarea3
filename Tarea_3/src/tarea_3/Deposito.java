@@ -7,6 +7,7 @@ import javax.swing.*;
 public class Deposito extends JPanel{
 
     private ArrayList<Bebida> ar;
+    private int n=0;
 
     public Deposito() {
         ar = new ArrayList<>();
@@ -14,6 +15,7 @@ public class Deposito extends JPanel{
 
     public void addBebida(Bebida a) {
         ar.add(a);
+        n++;
     }
 
     public Bebida getBebida() {
@@ -28,7 +30,10 @@ public class Deposito extends JPanel{
     public int Size(){
         return ar.size();
     }
-     
+    
+    public int getserie(){
+        return n;
+    }
     
     
     public void paintComponent(Graphics g, Expendedor exp){

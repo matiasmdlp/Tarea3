@@ -79,7 +79,8 @@ public class BotonesExp {
                 PressBandeja(evt);
             }
             public void mousePressed(MouseEvent me) {
-              System.out.println("Refill");  
+                System.out.println("Refill");
+                panel.getExp().Refill();
             }
             public void mouseReleased(MouseEvent me) {;}
             public void mouseEntered(MouseEvent me) {;}

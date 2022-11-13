@@ -35,8 +35,8 @@ public class Expendedor extends JPanel{
 
         for (int i = 0; i < numBebidas; i = i + 1) {
             coca.addBebida(new Coca(100 + i) {});
-            sprite.addBebida(new Sprite(200 + i) {});
-            fanta.addBebida(new Fanta(300 + i) {});
+            sprite.addBebida(new Sprite(300 + i) {});
+            fanta.addBebida(new Fanta(500 + i) {});
         }
         
         this.setBounds(40, 40, 640, 660);
@@ -74,7 +74,10 @@ public class Expendedor extends JPanel{
                 if (vuelto2.Size() == 0) { 
                     throw new PagoIncorrectoException ("Pago Incorrecto"); 
                 } else if (vuelto2.Pago() < precio){
-                    this.vuelto.addarray(vuelto2);
+                    for(int i=0; i<vuelto2.Size(); i++){
+                        vuelto.addMoneda(vuelto2.getMoneda());
+                        /*this.vuelto.addarray(vuelto2);*/
+                    }
                     throw new PagoInsuficienteException ("Pago Insuficiente");        
                     } else {
                         Bebida b = null;
@@ -112,6 +115,29 @@ public class Expendedor extends JPanel{
                     return b;
                 }
             }
+    }
+    
+    public void Refill(){
+        int c = 5-coca.Size();
+        int s = 5-sprite.Size();
+        int f = 5-fanta.Size();
+        
+        if((coca.Size()<5)){
+            for(int i=0; i<c ;i++){
+                coca.addBebida(new Coca(100+coca.getserie()));
+            }
+        }
+        if((sprite.Size()<5)){
+            for(int i=0; i<s ;i++){
+                sprite.addBebida(new Sprite(100+sprite.getserie()));
+            }
+        }
+        if((fanta.Size()<5)){
+            for(int i=0; i<f ;i++){
+                fanta.addBebida(new Fanta(100+fanta.getserie()));
+            }
+        }
+        
     }
 
     public Moneda getVuelto() {
