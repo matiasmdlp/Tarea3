@@ -14,11 +14,12 @@ public class Expendedor extends JPanel{
     private Deposito coca;
     private Deposito fanta;
     private Deposito sprite;
-    private DepositoMon vuelto;
+    private DepositoMon vuelto2;
     private DepositoExp depcompra;
-    private DepositoVuel depvuelto;
+    private DepositoVuel vuelto;
 
     private int precio;
+    private int ser;
     
     private JLabel emptyDeposit;
 
@@ -26,10 +27,11 @@ public class Expendedor extends JPanel{
         this.coca = new Deposito();
         this.sprite = new Deposito();
         this.fanta = new Deposito();
-        this.vuelto = new DepositoMon();
+        this.vuelto = new DepositoVuel();
         this.precio = precioBebidas;
         this.depcompra = new DepositoExp();
-        this.depvuelto = new DepositoVuel();
+        this.vuelto2 = new DepositoMon();
+        ser = 1;
 
         for (int i = 0; i < numBebidas; i = i + 1) {
             coca.addBebida(new Coca(100 + i) {});
@@ -41,59 +43,84 @@ public class Expendedor extends JPanel{
         this.setOpaque(false);
     }
     
+    public void addPago(Moneda m){
+        vuelto2.addMoneda(m);
+    }
+    
+    public int Pago(){
+        return vuelto2.Pago();
+    }
+    
+    public void Reset(){
+        vuelto.Vaciar();
+    }
+    
+    public void vaciarpago(){
+        vuelto2.Vaciar();
+    }
     
 
-    public Bebida comprarBebida(Moneda m, int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{ 
-        if(this.coca.Size() == 0 || this.sprite.Size() == 0 || this.fanta.Size() == 0){
+    public Bebida comprarBebida(int cual) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{ 
+        Deposito rev = new Deposito();
+        switch(cual){
+            case 1: rev=coca;
+            case 2: rev=fanta;
+            case 3: rev=sprite;
+        } 
+        
+        if(rev.Size() == 0){
             throw new NoHayBebidaException("No hay de esta Bebida");
-        }else{
-            if (m == null) { 
-                throw new PagoIncorrectoException ("Pago Incorrecto"); 
-            } else if (m.getValor() < precio){
-                this.vuelto.addMoneda(m);
-                throw new PagoInsuficienteException ("Pago Insuficiente");        
-                } else {
-                    Bebida b = null;
-                    switch (cual) {
-                        case 1 -> {
-                            b = SacaBebida(coca);
+            }else{
+                if (vuelto2.Size() == 0) { 
+                    throw new PagoIncorrectoException ("Pago Incorrecto"); 
+                } else if (vuelto2.Pago() < precio){
+                    this.vuelto.addarray(vuelto2);
+                    throw new PagoInsuficienteException ("Pago Insuficiente");        
+                    } else {
+                        Bebida b = null;
+                        switch (cual) {
+                            case 1 -> {
+                                b = SacaBebida(coca);
+                                if (b == null) {
+                                    return null;
+                                } else {
+                                     Vuelto100(CalcularVuelto(vuelto2));
+                                     depcompra.addBebida(b);
+                                }
+                            }
+
+                        case 2 -> {
+                            b = SacaBebida(fanta);
                             if (b == null) {
                                 return null;
-                            } else {
-                                 Vuelto100(CalcularVuelto(m));
+                                } else {
+                                    Vuelto100(CalcularVuelto(vuelto2));
+                                    depcompra.addBebida(b);
+                                }
+                            }
+
+                        case 3 -> {
+                            b = SacaBebida(sprite);
+                            if (b == null) {
+                                return null;
+                                } else {
+                                    Vuelto100(CalcularVuelto(vuelto2));
+                                    depcompra.addBebida(b);
+                                }
                             }
                         }
-
-                    case 2 -> {
-                        b = SacaBebida(fanta);
-                        if (b == null) {
-                            return null;
-                        } else {
-                            Vuelto100(CalcularVuelto(m));
-                        }
-                    }
-
-                    case 3 -> {
-                        b = SacaBebida(sprite);
-                        if (b == null) {
-                            return null;
-                        } else {
-                            Vuelto100(CalcularVuelto(m));
-                        }
-                    }
+                    return b;
                 }
-                return b;
             }
-        }
     }
 
     public Moneda getVuelto() {
         return vuelto.getMoneda();
     }
 
-    public int CalcularVuelto(Moneda m) {
-        if (m.getValor() - precio > 0) {
-            int v = m.getValor() - precio;
+    public int CalcularVuelto(DepositoMon m) {
+        if (m.Pago() - precio > 0) {
+            int v = m.Pago() - precio;
             return v;
         }else{
             return 0;
@@ -103,18 +130,26 @@ public class Expendedor extends JPanel{
     public Bebida SacaBebida(Deposito d) {
         return d.getBebida();
     }
-
+        
+    public Bebida TomarBebida(){
+        return depcompra.getBebida();
+    }
+    
     public void Vuelto100(int vuelto) {
         int v = vuelto;
         while (v > 0) {
-            Moneda n = new Moneda100("001");
-            this.vuelto.addMoneda(n);
+            this.vuelto.addMoneda(new Moneda100(ser+""));
             v = v - 100;
+            ser++;
         }
     }
     
     public int HayMonedas(){
         return vuelto.Size();
+    }
+    
+    public int HayBebidas(){
+        return depcompra.Size();
     }
     
     @Override //Dibujamos La Maquina Expendedora 
@@ -152,12 +187,18 @@ public class Expendedor extends JPanel{
         g.fillOval(880, 280, 80, 80);
         g.setColor(Color.BLACK);
         g.drawOval(880, 280, 80, 80);
+        
+        g.setColor(Color.white);
+        g.fillRect(500, 120, 160, 40);
+        g.setColor(Color.black);
+        g.drawRect(500, 120, 160, 40);
+        
                 
         coca.paintComponent(g, this);
         sprite.paintComponent(g, this);
         fanta.paintComponent(g, this);
         depcompra.paintComponent(g);        
-        depvuelto.paintComponent(g);
+        vuelto.paintComponent(g);
             
     }
 }

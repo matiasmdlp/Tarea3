@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class BotonesExp {
     private JButton Bandeja;
@@ -24,7 +25,7 @@ public class BotonesExp {
         Bandeja.setContentAreaFilled(false);
         panel.add(Bandeja);
         
-        Vuelto.setBounds(480, 560, 160, 80);
+        Vuelto.setBounds(500, 500, 160, 160);
         Vuelto.setForeground(Color.white);
         Vuelto.setOpaque(false);
         Vuelto.setContentAreaFilled(false);
@@ -34,13 +35,22 @@ public class BotonesExp {
         Rellenar.setForeground(Color.black);
         panel.add(Rellenar);
         
+        JLabel Visor = new JLabel();
+        Visor.setText("");
+        Visor.setFont(new Font("Arial", Font.PLAIN, 10));
+        Visor.setForeground(Color.black);
+        Visor.setBounds(520, 135, 120, 10);
+        panel.add(Visor);
+        
         Bandeja.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PressBandeja(evt);
             }
             public void mousePressed(MouseEvent me) {
-              System.out.println("Tu Bebida");  
+                System.out.println("Tu Bebida");
+                panel.getExp().TomarBebida();
+                panel.repaint();
             }
             public void mouseReleased(MouseEvent me) {;}
             public void mouseEntered(MouseEvent me) {;}
@@ -53,7 +63,10 @@ public class BotonesExp {
                 PressBandeja(evt);
             }
             public void mousePressed(MouseEvent me) {
-              System.out.println("Tu Vuelto");  
+                System.out.println("Tu Vuelto");
+                panel.getExp().Reset();
+                Visor.setText("");
+                panel.repaint();
             }
             public void mouseReleased(MouseEvent me) {;}
             public void mouseEntered(MouseEvent me) {;}

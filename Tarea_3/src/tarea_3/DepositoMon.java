@@ -23,7 +23,25 @@ public class DepositoMon {
         return m;
     }
     
+    public Moneda Get(int x){
+        return ar.get(x);
+    }
+    
     public int Size(){
         return ar.size();
+    }
+    
+    public int Pago(){
+        int p=0;
+        for(int i=0; i<this.Size(); i++ ){
+            p = p + ar.get(i).getValor();
+        }
+        return p;
+    }
+    
+    public void Vaciar(){
+        for(int i=0; i<=ar.size(); i++ ){
+            ar.remove(0);
+        }
     }
 }

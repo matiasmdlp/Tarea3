@@ -26,6 +26,10 @@ public class DepositoExp extends JPanel{
         return ar == null;
     }
     
+    public int Size(){
+        return ar.size();
+    }
+    
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -35,9 +39,19 @@ public class DepositoExp extends JPanel{
         g.setColor(Color.black);
         g.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
         
-        if(bebida != null){
-            bebida.setBounds(260, 580, 80, 40);
-            bebida.paintComponent(g);
+        if(ar.size()!=0){
+            if(bebida != null && bebida.getSabor()=="CocaCola"){
+                bebida.setBounds(205, 590, 40, 80);
+                bebida.paintComponent(g);
+            }
+            if(bebida != null && bebida.getSabor()=="Fanta"){
+                bebida.setBounds(205-240, 590, 40, 80);
+                bebida.paintComponent(g);
+            }
+            if(bebida != null && bebida.getSabor()=="Sprite"){
+                bebida.setBounds(205-120, 590, 40, 80);
+                bebida.paintComponent(g);
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ class Moneda500 extends Moneda{
     public Moneda500(String serie){
         super(500);
         super.setSerie(serie);
-        this.setBounds(485,565,40,40);
+        this.setBounds(880,160,40,40);
     }
     @Override
     public int getValor(){

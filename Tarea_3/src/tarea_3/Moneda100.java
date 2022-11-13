@@ -8,7 +8,7 @@ class Moneda100 extends Moneda{
     public Moneda100(String serie){
         super(100);
         super.setSerie(serie);
-        this.setBounds(485,565,40,40);
+        this.setBounds(760,160,40,40);
     }
     @Override
     public int getValor(){
@@ -20,13 +20,13 @@ class Moneda100 extends Moneda{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         
-        g.setColor(Color.darkGray);
+        g.setColor(Color.orange);
         g.fillOval(this.getX(), this.getY(), this.getWidth(), this.getHeight());
         g.setColor(Color.black);
         g.drawOval(this.getX(), this.getY(), this.getWidth(), this.getHeight());
         
         g.setColor(Color.white);
-        g.setFont(new Font("SansSerif.", 1, 10));
-        g.drawString(super.getSerie(), this.getX() + 5, this.getY()+ 5);
+        g.setFont(new Font("SansSerif.", 1, 15));
+        g.drawString(super.getSerie(), this.getX() + 5, this.getY()+ 20);
     }
 }

@@ -12,7 +12,7 @@ abstract class Moneda extends JPanel{
         this.valor = v;
     }
     public String getSerie(){
-        return serie;
+        return "S"+serie;
     }
     public void setSerie(String aux){
         serie = aux;

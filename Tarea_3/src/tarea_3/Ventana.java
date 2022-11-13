@@ -18,7 +18,7 @@ public class Ventana extends JFrame {
         this.getContentPane().add(panel);
         
         botones1 = new BotonesBebidas(panel);
-        botones2 = new BotonesMonedas(panel);
+        /*botones2 = new BotonesMonedas(panel);*/
         botones3 = new BotonesExp(panel);
         
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
