@@ -47,9 +47,11 @@ public class BotonesExp {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PressBandeja(evt);
             }
+            // Tu Bebida
             public void mousePressed(MouseEvent me) {
                 System.out.println("Tu Bebida");
-                panel.getExp().TomarBebida();
+                panel.getComp().addBebida(panel.getExp().TomarBebida());
+                panel.getExp().vaciarpago();
                 panel.repaint();
             }
             public void mouseReleased(MouseEvent me) {;}
@@ -66,6 +68,7 @@ public class BotonesExp {
                 System.out.println("Tu Vuelto");
                 panel.getExp().Reset();
                 Visor.setText("");
+                panel.getExp().vaciarpago();
                 panel.repaint();
             }
             public void mouseReleased(MouseEvent me) {;}
@@ -86,6 +89,8 @@ public class BotonesExp {
             public void mouseEntered(MouseEvent me) {;}
             public void mouseExited(MouseEvent me) {;}
         });
+        
+        
     }
     
     private void PressBandeja(java.awt.event.MouseEvent evt){
@@ -100,3 +105,4 @@ public class BotonesExp {
         panel.repaint();
     }
 }
+

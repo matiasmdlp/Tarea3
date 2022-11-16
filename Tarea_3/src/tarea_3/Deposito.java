@@ -36,30 +36,30 @@ public class Deposito extends JPanel{
     }
     
     
-    public void paintComponent(Graphics g, Expendedor exp){
+    public void paintComponent(Graphics g, Expendedor exp) {
         super.paintComponent(g);
-        if(ar.isEmpty()){
+        if (ar.isEmpty()) {
         } else {
             Bebida beb = ar.get(0);
             String sabor = beb.getSabor();
-            if("CocaCola".equals(sabor)){
-                for (int i = 0; i < ar.size() && i < 6; i++){
-                    beb= ar.get(i);
-                    beb.setBounds(exp.getX()+55, exp.getY() + 480 - (74*(i+1)), 30, 60);
+            if ("CocaCola".equals(sabor)) {
+                for (int i = 0; i < ar.size() && i < 6; i++) {
+                    beb = ar.get(i);
+                    beb.setBounds(exp.getX() + 55, exp.getY() + 480 - (74 * (i + 1)), 30, 60);
                     beb.paintComponent(g);
                 }
             }
-            if("Fanta".equals(sabor)){
-                for (int i = 0; i < ar.size() && i < 6; i++){
-                    beb= ar.get(i);
-                    beb.setBounds(exp.getX()+55, exp.getY() + 480 - (74*(i+1)), 30, 60);
+            if ("Fanta".equals(sabor)) {
+                for (int i = 0; i < ar.size() && i < 6; i++) {
+                    beb = ar.get(i);
+                    beb.setBounds(exp.getX() + 55, exp.getY() + 480 - (74 * (i + 1)), 30, 60);
                     beb.paintComponent(g);
                 }
             }
-            if("Sprite".equals(sabor)){
-                for (int i = 0; i < ar.size() && i < 6; i++){
-                    beb= ar.get(i);
-                    beb.setBounds(exp.getX()+55, exp.getY() + 480 - (74*(i+1)), 30, 60);
+            if ("Sprite".equals(sabor)) {
+                for (int i = 0; i < ar.size() && i < 6; i++) {
+                    beb = ar.get(i);
+                    beb.setBounds(exp.getX() + 55, exp.getY() + 480 - (74 * (i + 1)), 30, 60);
                     beb.paintComponent(g);
                 }
             }

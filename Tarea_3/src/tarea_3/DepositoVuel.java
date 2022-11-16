@@ -16,7 +16,7 @@ public class DepositoVuel extends JPanel{
     public void addMoneda(Moneda m) {
         ar.addMoneda(m);
     }
-    
+     
     public void addarray(DepositoMon m){
         for(int i=0; i<m.Size(); i++){
             ar.addMoneda(m.getMoneda());

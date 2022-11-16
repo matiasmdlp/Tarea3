@@ -17,13 +17,15 @@ public class Expendedor extends JPanel{
     private DepositoMon vuelto2;
     private DepositoExp depcompra;
     private DepositoVuel vuelto;
+    private Comprador comp;
 
     private int precio;
     private int ser;
     
     private JLabel emptyDeposit;
+    
 
-    public Expendedor(int numBebidas, int precioBebidas) {
+    public Expendedor(int numBebidas, int precioBebidas, Comprador com) {
         this.coca = new Deposito();
         this.sprite = new Deposito();
         this.fanta = new Deposito();
@@ -31,6 +33,7 @@ public class Expendedor extends JPanel{
         this.precio = precioBebidas;
         this.depcompra = new DepositoExp();
         this.vuelto2 = new DepositoMon();
+        comp = com;
         ser = 1;
 
         for (int i = 0; i < numBebidas; i = i + 1) {
@@ -74,9 +77,8 @@ public class Expendedor extends JPanel{
                 if (vuelto2.Size() == 0) { 
                     throw new PagoIncorrectoException ("Pago Incorrecto"); 
                 } else if (vuelto2.Pago() < precio){
-                    for(int i=0; i<vuelto2.Size(); i++){
-                        vuelto.addMoneda(vuelto2.getMoneda());
-                        /*this.vuelto.addarray(vuelto2);*/
+                    for(int i=0; i<4 ; i++){
+                        vuelto.addMoneda(vuelto2.Get(i));
                     }
                     throw new PagoInsuficienteException ("Pago Insuficiente");        
                     } else {
@@ -178,7 +180,7 @@ public class Expendedor extends JPanel{
         return depcompra.Size();
     }
     
-    @Override //Dibujamos La Maquina Expendedora 
+    @Override 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         
@@ -218,14 +220,13 @@ public class Expendedor extends JPanel{
         g.fillRect(500, 120, 160, 40);
         g.setColor(Color.black);
         g.drawRect(500, 120, 160, 40);
-        
-                
+               
         coca.paintComponent(g, this);
         sprite.paintComponent(g, this);
         fanta.paintComponent(g, this);
         depcompra.paintComponent(g);        
-        vuelto.paintComponent(g);
-            
+        vuelto.paintComponent(g);  
+        
     }
 }
 

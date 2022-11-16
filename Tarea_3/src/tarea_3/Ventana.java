@@ -2,11 +2,11 @@ package tarea_3;
 
 import java.awt.*;
 import javax.swing.*;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Ventana extends JFrame {
     Panel panel;
     private BotonesBebidas botones1;
-    private BotonesMonedas botones2;
     private BotonesExp botones3;
     
     public Ventana(){

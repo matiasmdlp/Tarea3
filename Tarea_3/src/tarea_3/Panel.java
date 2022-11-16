@@ -8,8 +8,8 @@ public class Panel extends JPanel{
     private Comprador comprador;
     
     public Panel(){
-        exp = new Expendedor(5, 500);
-        comprador = new Comprador();
+        exp = new Expendedor(5, 500, comprador);
+        comprador = new Comprador(this);
         this.setLayout(null);
         this.setBackground(Color.DARK_GRAY);
     }
@@ -26,5 +26,6 @@ public class Panel extends JPanel{
     public void paintComponent (Graphics g){
         super.paintComponent(g);
         exp.paintComponent(g);
+        comprador.paintComponents(g);
     }
 }

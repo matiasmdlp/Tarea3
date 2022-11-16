@@ -21,6 +21,8 @@ abstract class Bebida extends JPanel {
     public abstract String getSabor();
     
     @Override
-    public void paintComponent(Graphics g){};
+    public void paintComponent(Graphics g){
+        
+    };
 }
 

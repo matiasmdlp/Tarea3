@@ -60,16 +60,13 @@ public class BotonesBebidas {
                     if(j>=0){
                         Visor.setText("Tu vuelto es:"+" "+j);
                         panel.repaint();
-                        panel.getExp().vaciarpago();
                     }else{
                         Visor.setText("pago insuficiente");
                         panel.repaint();
-                        panel.getExp().vaciarpago();
                     }
                 }else{
                     Visor.setText("Retire el vueto o la bebida");
                     panel.repaint();
-                    panel.getExp().vaciarpago();
                 }
             }
             public void mouseReleased(MouseEvent me) {;}
@@ -99,7 +96,6 @@ public class BotonesBebidas {
                     if(j>=0){
                         Visor.setText("Tu vuelto es:"+" "+j);
                         panel.repaint();
-                        panel.getExp().vaciarpago();
                     }else{
                         Visor.setText("pago insuficiente");
                         panel.repaint();
@@ -137,17 +133,15 @@ public class BotonesBebidas {
                     int j = panel.getExp().Pago()-500;
                     if(j>=0){
                         Visor.setText("Tu vuelto es:"+" "+j);
-                        panel.repaint();
-                        panel.getExp().vaciarpago();
+                        panel.repaint();                        
                     }else{
                         Visor.setText("pago insuficiente");
-                        panel.repaint();
                         panel.getExp().vaciarpago();
+                        panel.repaint();
                     }
                 }else{
                     Visor.setText("Retire el vueto o la bebida");
                     panel.repaint();
-                    panel.getExp().vaciarpago();
                 }
             }
             public void mouseReleased(MouseEvent me) {;}
@@ -244,6 +238,7 @@ public class BotonesBebidas {
                 if((panel.getExp().HayMonedas())==0 && panel.getExp().HayBebidas()==0){
                     System.out.println("$100");
                     panel.getExp().addPago(new Moneda100(serie100+""));
+                    panel.getComp().Recibirvuelto(new Moneda100(serie100+""));
                     serie100++;
                     Serie100.setText("S:"+serie100);
                     Visor.setText(panel.getExp().Pago()+"");
@@ -268,6 +263,7 @@ public class BotonesBebidas {
                 if((panel.getExp().HayMonedas())==0 && panel.getExp().HayBebidas()==0){
                     System.out.println("$500");
                     panel.getExp().addPago(new Moneda500(serie500+""));
+                    panel.getComp().Recibirvuelto(new Moneda100(serie500+""));
                     serie500++;
                     Serie500.setText("S:"+serie500);
                     Visor.setText(panel.getExp().Pago()+"");
@@ -292,6 +288,7 @@ public class BotonesBebidas {
                 if((panel.getExp().HayMonedas())==0 && panel.getExp().HayBebidas()==0){
                     System.out.println("$1000");
                     panel.getExp().addPago(new Moneda1000(serie1000+""));
+                    panel.getComp().Recibirvuelto(new Moneda100(serie1000+""));
                     serie1000++;
                     Serie1000.setText("S:"+serie1000);
                     Visor.setText(panel.getExp().Pago()+"");
@@ -316,6 +313,7 @@ public class BotonesBebidas {
                 if((panel.getExp().HayMonedas())==0 && panel.getExp().HayBebidas()==0){
                     System.out.println("$1500");  
                     panel.getExp().addPago(new Moneda1500(serie1500+""));
+                    panel.getComp().Recibirvuelto(new Moneda100(serie1500+""));
                     serie1500++;
                     Serie1500.setText("S:"+serie1500);
                     Visor.setText(panel.getExp().Pago()+"");
