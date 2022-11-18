@@ -22,10 +22,10 @@ public class Comprador extends JPanel{
     
     public Comprador(Panel panel){
         arrvuelto = new DepositoMon();
-        Mano = new JButton();
+        //Mano = new JButton();
         this.panel=panel;
         
-        Mano.setBounds(800, 440, 120, 200);
+       /* Mano.setBounds(800, 440, 120, 200);
         Mano.setForeground(Color.white);
         Mano.setOpaque(false);
         Mano.setContentAreaFilled(false);
@@ -38,7 +38,6 @@ public class Comprador extends JPanel{
             }
             public void mousePressed(MouseEvent me) {
                 System.out.println(bebida.getSabor()+" "+bebida.getSerie());
-                getBebida();
                 bebida.repaint();
                 panel.repaint();
             }
@@ -46,6 +45,7 @@ public class Comprador extends JPanel{
             public void mouseEntered(MouseEvent me) {;}
             public void mouseExited(MouseEvent me) {;}
         });
+        */
     }
 
     public String getVuelto(){
